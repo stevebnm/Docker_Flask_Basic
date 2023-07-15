@@ -21,7 +21,7 @@ try:
   connection = mysql.connector.connect(**config)
   cursor = connection.cursor()
 except:
-  return "Oops!! Unable to Connect to MySQL DB"
+  print("Oops!! Unable to Connect to MySQL DB")
 
 # Home Method
 @app.route("/", methods=['GET','POST'])
