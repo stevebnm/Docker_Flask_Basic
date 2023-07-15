@@ -17,8 +17,11 @@ config = {
     'database': 'Employee'
 }
 
-connection = mysql.connector.connect(**config)
-cursor = connection.cursor()
+try:
+  connection = mysql.connector.connect(**config)
+  cursor = connection.cursor()
+except:
+  return "Oops!! Unable to Connect to MySQL DB"
 
 # Home Method
 @app.route("/", methods=['GET','POST'])
@@ -67,4 +70,4 @@ def delete():
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host="0.0.0.0",debug=True)
