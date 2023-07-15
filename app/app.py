@@ -8,25 +8,21 @@ import mysql.connector
 import json
 
 app = Flask(__name__,template_folder="templates")
-connection
-cursor
-def get_connection():
 # Connecting to Sql
-  config = {
-      'user': 'root',
-      'password':  'root',
-      'host': 'db',
-      'port': '3306',
-      'database': 'Employee'
-  }
+config = {
+    'user': 'root',
+    'password':  'root',
+    'host': 'db',
+    'port': '3306',
+    'database': 'Employee'
+}
 
-  connection = mysql.connector.connect(**config)
-  cursor = connection.cursor()
+connection = mysql.connector.connect(**config)
+cursor = connection.cursor()
 
 # Home Method
 @app.route("/", methods=['GET','POST'])
 def home():
-    get_connection()
     # Post request
     if request.method == "POST":
 
