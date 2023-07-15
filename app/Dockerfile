@@ -4,7 +4,9 @@ EXPOSE 5000
 
 WORKDIR /app
 
-COPY . /app
-RUN pip3 install -r /app/requirements.txt
-CMD python3 /app/app.py
+COPY requirements.txt /app
+RUN pip install -r requirements.txt
+
+COPY app.py /app
+CMD python app.py
 
