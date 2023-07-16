@@ -33,7 +33,6 @@ def version():
 
 @app.route("/home", methods=['GET','POST'])
 def home():
-  AllEmployees = display_all()
   config = {
       'user': 'root',
       'password': 'root',
