@@ -31,26 +31,6 @@ def version():
   except:
       return "Oops!! Unable to Connect to MySQL DB"
 
-def display_all():
-  config = {
-      'user': 'root',
-      'password': 'root',
-      'host': 'db',
-      'port': '3306',
-      'database': 'Employee'
-  }
-
-  connection = mysql.connector.connect(**config)
-
-  # Get All Employees
-  cursor = connection.cursor()
-  getEmployees = "select * from employee"
-  cursor.execute(getEmployees)
-  AllEmployees = cursor.fetchall()
-  connection.close()
-  return AllEmployees
-
-
 @app.route("/home", methods=['GET','POST'])
 def home():
   AllEmployees = display_all()
@@ -85,6 +65,12 @@ def home():
       cursor = connection.cursor()
       cursor.execute(addEmployee,dataEmployee)
       connection.commit()
+
+  connection = mysql.connector.connect(**config)
+  cursor = connection.cursor()
+  getEmployees = "select * from employee"
+  cursor.execute(getEmployees)
+  AllEmployees = cursor.fetchall()
 
 
   # Render Home Page
